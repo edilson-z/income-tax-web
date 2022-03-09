@@ -131,6 +131,10 @@
     color: #ffffff;
   }
 
+  label{
+    font-weight: 400;
+  }
+
 
   /*---------------------------------------
      BUTTONS               

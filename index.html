@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-	<title>Income Tax Calculator</title>
+     <title>Income Tax Calculator</title>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
@@ -12,11 +13,13 @@
 
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
 
      <!-- PRE LOADER 
@@ -28,7 +31,7 @@
           </div>
      </section>
 
-
+     -->
      <!-- MENU -->
      <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
           <div class="container">
@@ -68,13 +71,15 @@
 
                     <div class="col-md-offset-3 col-md-6 col-sm-12">
                          <div class="home-info">
+                              <h1 id="tax-amount"></h1>
                               <h3>Namibian Income Tax Calculator - by AkilliX</h3>
                               <h1>The free & easiest way to find your income tax in seconds!</h1>
                               <label style="color: white">Salary per month N$</label>
-                              <form action="" method="get" class="online-form">
-                                   <input type="number" id="salary" name="number" class="form-control" placeholder="Enter your salary here..." required="">
-                                   <button type="submit" id="btn-submit" class="form-control">Calculate</button>
-                              </form>
+                              <div class="online-form">
+                                   <input type="number" id="salary" name="number" class="form-control"
+                                        placeholder="Enter your salary here..." required="">
+                                   <button id="btn-submit" class="form-control" onclick="calcTax();">Calculate</button>
+                              </div>
                          </div>
                     </div>
 
@@ -87,47 +92,47 @@
                <div class="row">
                     <p id="output"></p>
                     <div class="table-responsive">
-                          <table class="table table-striped table-bordered">
-                         <thead>
-                           <tr>
-                             <th>Taxable Income </th>
-                             <th>N$ Rates of tax from years of assessment <br>ending 2021/22 (N$)</th>
-                           </tr>
-                         </thead>
-                         <tbody>
-                           <tr>
-                             <td>0 - 50 000</td>
-                             <td>Not taxable</td>
-                           </tr>
-                           <tr>
-                             <td>50 001 - 100 000</td>
-                             <td>18% for each N$ above 50 000</td>
-                           </tr>
-                           <tr>
-                             <td>100 001 - 300 000</td>
-                             <td>9 000 + 25% for each N$ above 100 000</td>
-                           </tr>
-                           <tr>
-                             <td>300 001 - 500 000</td>
-                             <td>59 000 + 28% for each N$ above 300 000</td>
-                           </tr>
-                           <tr>
-                             <td>500 001 - 800 000</td>
-                             <td>115 000 + 30% for each N$ above 500 000</td>
-                           </tr>
-                           <tr>
-                             <td>800 001 - 1 500 000</td>
-                             <td>205 000 + 32% for each N$ above 800 000</td>
-                           </tr>
-                           <tr>
-                             <td>Above 1 500 000</td>
-                             <td>429 000 + 37% for each N$ above 1 500 000</td>
-                           </tr>
-                         </tbody>
+                         <table class="table table-striped table-bordered">
+                              <thead>
+                                   <tr>
+                                        <th>Taxable Income </th>
+                                        <th>N$ Rates of tax from years of assessment <br>ending 2021/22 (N$)</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <td>0 - 50 000</td>
+                                        <td>Not taxable</td>
+                                   </tr>
+                                   <tr>
+                                        <td>50 001 - 100 000</td>
+                                        <td>18% for each N$ above 50 000</td>
+                                   </tr>
+                                   <tr>
+                                        <td>100 001 - 300 000</td>
+                                        <td>9 000 + 25% for each N$ above 100 000</td>
+                                   </tr>
+                                   <tr>
+                                        <td>300 001 - 500 000</td>
+                                        <td>59 000 + 28% for each N$ above 300 000</td>
+                                   </tr>
+                                   <tr>
+                                        <td>500 001 - 800 000</td>
+                                        <td>115 000 + 30% for each N$ above 500 000</td>
+                                   </tr>
+                                   <tr>
+                                        <td>800 001 - 1 500 000</td>
+                                        <td>205 000 + 32% for each N$ above 800 000</td>
+                                   </tr>
+                                   <tr>
+                                        <td>Above 1 500 000</td>
+                                        <td>429 000 + 37% for each N$ above 1 500 000</td>
+                                   </tr>
+                              </tbody>
                          </table>
                     </div>
-                    </div>
                </div>
+          </div>
      </section>
 
      <!-- CONTACT -->
@@ -142,23 +147,26 @@
                               </div>
 
                               <div class="col-md-4 col-sm-4">
-                                   <input type="text" class="form-control" placeholder="Full name" name="name" required="">
+                                   <input type="text" class="form-control" placeholder="Full name" name="name"
+                                        required="">
                               </div>
                               <div class="col-md-4 col-sm-4">
-                                   <input type="email" class="form-control" placeholder="Email address" name="email" required="">
+                                   <input type="email" class="form-control" placeholder="Email address" name="email"
+                                        required="">
                               </div>
                               <div class="col-md-4 col-sm-4">
                                    <input type="submit" class="form-control" name="send message" value="Send Message">
                               </div>
                               <div class="col-md-12 col-sm-12">
-                                   <textarea class="form-control" rows="8" placeholder="Your message" name="message" required=""></textarea>
+                                   <textarea class="form-control" rows="8" placeholder="Your message" name="message"
+                                        required=""></textarea>
                               </div>
                          </form>
                     </div>
 
                </div>
           </div>
-     </section>       
+     </section>
 
 
      <!-- FOOTER -->
@@ -169,7 +177,8 @@
                     <div class="copyright-text col-md-12 col-sm-12">
                          <div class="col-md-6 col-sm-6">
                               <p>Copyright &copy; 2021 Company Name - Design:
-                				<a rel="nofollow" href="http://akillix.com.com">Akilli X</a></p>
+                                   <a rel="nofollow" href="http://akillix.com.com">Akilli X</a>
+                              </p>
                          </div>
 
                          <div class="col-md-6 col-sm-6">
@@ -192,5 +201,122 @@
      <script src="js/jquery.stellar.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
+
+     <script>
+          let taxText = document.getElementById("tax-amount");
+          
+          let btn = document.getElementById("btn-submit");
+
+          //btn.onclick = calcTax();
+
+          function calcTax() {
+               let tax = document.getElementById("salary").value;
+               // console.log(tax);
+               if (tax < 50000) { 
+                    taxText.innerHTML = "Your income is not taxable.";
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         html: '<p>Your income is not taxable.<p>',
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-text",
+                         },
+                    });
+               }
+               else if (tax >= 50000 && tax < 100000) {
+                    let finalTax = 0.18 * (tax - 50000);
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else if (tax >= 100000 && tax < 300000) {
+                    let finalTax = 9000 + 0.25 * (tax - 100000)
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else if (tax >= 300000 && tax < 500000) {
+                    let finalTax = 59000 + 0.28 * (tax - 300000)
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else if (tax >= 500000 && tax < 800000) {
+                    let finalTax = 115000 + 0.3 * (tax - 500000)
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else if (tax >= 800000 && tax < 1500000) {
+                    let finalTax = 205000 + 0.32 * (tax - 800000)
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else if (tax >= 1500000) {
+                    let finalTax = 429000 + 0.37 * (tax - 1500000)
+                    taxText.innerHTML = `Income Tax: N$${finalTax}`;
+
+                    Swal.fire({
+                         icon: "success",
+                         title: "Income Tax:",
+                         html: `<ul><li>Monthly Salary: N$${tax}</li><li>Annual Salary: N$${tax*12}</li><li>Income Tax: N$${finalTax}</li></ul>`,
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-ul",
+                         }
+                    });
+               } else {
+                    taxText.innerHTML = "You have entered an incorrect income amount";
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         html: '<p>You have entered an incorrect income amount.<p>',
+                         confirmButtonColor: "#29ca8e",
+                         customClass: {
+                              popup: "format-text",
+                         },
+                    });
+               }
+               
+          }
+     </script>
 </body>
+
 </html>
